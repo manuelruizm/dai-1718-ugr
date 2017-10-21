@@ -5,7 +5,7 @@
 #	DAI - Desarrollo de Aplicaciones para Internet
 #	Curso 2017-2018
 #
-#	Práctica 1 - Soluciones
+#	Práctica 1: Ejercicio 1 - Soluciones
 #
 #------------------------------------------------------------------------------
 
@@ -59,5 +59,7 @@ def adivinarNumero():
 		print("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 		print("GAME OVER.\nEl número buscado era ", aleatorio)
 		print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+
+#------------------------------------------------------------------------------
 
 adivinarNumero()
