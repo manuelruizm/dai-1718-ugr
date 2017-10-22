@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="{{ url_for('static', filename='P2-E3.css') }}" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="static/images/ugr.png"/>
+<title>DAI</title>
+</head>
+<body>
+
+<h1>Curso 2017-2018</h1>
+
+{% if usuario %}
+	<p>Nombre: {{usuario}}</p>
+{% else %}
+	<p>No ha introducido su nombre de usuario.</p>
+{% endif %}
+
+{% if usuario == 'manolo' %}
+<img style="max-width:320px" src="{{ url_for('static', filename='images/manolo.png') }}">
+{% elif usuario == 'juanra' %}
+<img style="max-width:320px" src="{{ url_for('static', filename='images/juanra.png') }}">
+{% else %}
+<img style="max-width:320px" src="{{ url_for('static', filename='images/user.png') }}">
+{% endif %}
+
+</body>
+</html>
