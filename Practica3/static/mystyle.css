@@ -1,0 +1,104 @@
+h1{
+	color: red;
+	text-align: center;
+}
+
+h2{
+	text-align: center;
+}
+
+/* Datos de estilo para el bloque global de la cabecera. */
+header{
+	border-width: 2px;
+	border-style: solid;
+	border-color: green;
+	width: 100%; /* Para ajustar al ancho completo del viewport. */
+	overflow: auto; /* Para que el bloque <header> se adapte al tamaño de 
+					   su contenido. */
+}
+
+/* Datos de estilo para cada uno de los elementos internos al <header>. */
+.cabecera{
+	float: left; /* Para que se ajuste a la izquierda del elemento anterior 
+					(estar alineados en el <header>). */
+}
+
+header #logo{
+	width: 20%; /* Se ajusta el tamaño del % que ocupa el <div> del logo. */
+}
+
+#logo img{
+	width: 100%; /* Se ajusta  el tamaño de la imagen al total del <div>. */
+	max-width: 150px;
+}
+
+header #titulo{
+	width: 50%;
+	/*border-width: 1px;
+	border-style: solid;
+	border-color: green;*/
+}
+
+header #formulario{
+	width: 28%;
+	text-align: center;
+	margin-top: 4%;
+	/*border-width: 1px;
+	border-style: solid;
+	border-color: green;*/
+}
+
+.main-container{
+	width: 80%;
+	min-height: 350px;
+	margin-top: 2px;
+	margin-left: 10%;
+	border-width: 2px;
+	border-style: solid;
+	border-color: green;
+	overflow: auto;
+}
+
+.left-column{
+	width: 20%;
+	margin: 2px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: red;
+	float: left;
+}
+
+.right-column{
+	width: 78%;
+	margin: 2px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+	float: left;
+}
+
+ul{
+	list-style-type: none;
+	width: 100%;
+	margin: 0;
+    padding: 0;
+}
+
+li{
+	display: block;
+	font-size: 30px;
+}
+
+li:hover{
+	background-color: gray;
+}
+
+footer{
+	width: 100%;
+	min-height: 100px;
+	margin-top: 2px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: green;
+	text-align: center;
+}
