@@ -24,17 +24,21 @@
 			<h2>Fallando goles cantados desde 2013</h2>
 		</div>
 
-		{% if not user %}
 		<div class="cabecera" id="formulario">
-			<form method="post">
-				Nombre: 
-				<input type="text" name="nombre"><br>
-				<input type="submit" value="Login">
-			</form>
+			{% if not logueado %}
+				<form action="/" method="post">
+					Nombre: <br>
+					<input type="text" name="nombre"><br>
+					Contraseña: <br>
+					<input type="text" name="contraseña"><br>
+					<input type="submit" value="Iniciar Sesión">
+					<button><a href="/registrarse">Registrarse</a></button>
+				</form>
+			{% else %}
+				<p>Bienvenido {{session['username']}}</p>
+				<button><a href="/logout">Log out</a></button>
+			{% endif %}
 		</div>
-		{% else %}
-			<p>Bienvenido {{user}}</p>
-		{% endif %}
 
 	</header>
 
@@ -46,6 +50,9 @@
 				<a href="/"><li>Inicio</li></a>
 				<a href="/clasificacion"><li>Clasificación</li></a>
 				<a href="/contacto"><li>Contacto</li></a>
+				{% if logueado %}
+				<a href="/editar"><li>Editar</li></a>
+				{% endif %}
 			</ul>
 
 		</div>
