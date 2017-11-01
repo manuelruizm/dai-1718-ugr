@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block name %}
+Editar
+{% endblock %}
+
+{% block content %}
+
+<form action="/modificar" method="post">
+	Nombre: <br>
+	<input type="text" name="nombre" value={{misDatos.Username}}><br>
+	Contraseña: <br>
+	<input type="text" name="contraseña" value={{misDatos.Password}}><br>
+	<input type="submit" value="Guardar"><br>
+</form>
+{% endblock %}
