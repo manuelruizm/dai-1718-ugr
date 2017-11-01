@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Título de la página</title>
+	<title>{% block name %}PDV{% endblock %}</title>
 	<link rel="stylesheet" href="static/mystyle.css">
 	<meta charset="UTF-8">
 	<meta name="author" content="Manuel Ruiz">
@@ -16,14 +16,15 @@
 	<header>
 
 		<div class="cabecera" id="logo">
-			<img src="static/images/ugr.png" alt="Logo">
+			<img src="static/images/logo.png" alt="Logo">
 		</div>
 
 		<div class="cabecera" id="titulo">
-			<h1>Título</h1>
-			<h2>Subtítulo</h2>
+			<h1>Peña Deportiva Villasol</h1>
+			<h2>Fallando goles cantados desde 2013</h2>
 		</div>
 
+		{% if not user %}
 		<div class="cabecera" id="formulario">
 			<form method="post">
 				Nombre: 
@@ -31,6 +32,9 @@
 				<input type="submit" value="Login">
 			</form>
 		</div>
+		{% else %}
+			<p>Bienvenido {{user}}</p>
+		{% endif %}
 
 	</header>
 
@@ -39,20 +43,18 @@
 		<div class="left-column">
 
 			<ul id="menu">
-				<li>Inicio</li>
-				<li>Historia</li>
-				<li>Contacto</li>
-			</ul> 
+				<a href="/"><li>Inicio</li></a>
+				<a href="/clasificacion"><li>Clasificación</li></a>
+				<a href="/contacto"><li>Contacto</li></a>
+			</ul>
 
 		</div>
 
 		<div class="right-column">
 
-			<p>Lorem ipsum...</p>
-			<p>Lorem ipsum...</p>
-			<p>Lorem ipsum...</p>
-			<p>Lorem ipsum...</p>
-			<p>Lorem ipsum...</p>
+			{% block content %}
+			<p>Esta es la página de inicio.</p>
+			{% endblock %}
 
 		</div>
 
@@ -60,7 +62,7 @@
 
 	<footer>
 
-		<p>Manuel Ruiz Maldonado (Licencia ¿?)</p>
+		<p>&copy Manuel Ruiz Maldonado (Licencia ¿?)</p>
 
 	</footer>
 

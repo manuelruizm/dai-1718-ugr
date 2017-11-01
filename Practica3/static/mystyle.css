@@ -87,6 +87,11 @@ ul{
 li{
 	display: block;
 	font-size: 30px;
+	text-align: center;
+}
+
+a{
+	text-decoration: none;
 }
 
 li:hover{
@@ -101,4 +106,8 @@ footer{
 	border-style: solid;
 	border-color: green;
 	text-align: center;
+}
+
+#logo-face{
+	width: 15%;
 }
