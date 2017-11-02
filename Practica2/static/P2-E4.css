@@ -1,0 +1,32 @@
+body {
+    background-color: #123456;
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+}
+
+h3 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+    color: white;
+}
+
+.label{
+	color: white;
+}
+
+img{
+	border-radius: 50px;
+}
+
+.error p{
+	font-size: 100px;
+	text-align: center;
+}
