@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title>Mandelbrot</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{{ url_for('static', filename='P2-E4.css') }}" rel="stylesheet">
+		<meta name="author" content="Manuel Ruiz">
+
+	</head>
+
+	<body>
+
+		<div align="center">
+
+			<h1> Generación dinámica de figuras SVG<h1>
+			<form action="" method="post">
+				<button type="submit">Generar SVG</button>
+			</form>
+
+			{% if aleatorio == 1%}  
+			<svg height="600" width="1000">
+			<circle cx= {{ x }} cy= {{ y }} r="40" fill={{ color }} />
+			</svg>
+
+			{% elif aleatorio == 2%}  
+			<svg height="600" width="1000">
+			<rect x= {{ x }} y= {{ y }} height="50" width="80" fill={{ color }} />
+			</svg>
+
+			{% elif aleatorio == 3%}  
+			<svg height="600" width="1000">
+			<ellipse cx={{ x }} cy={{ y }} rx="100" ry="50" fill={{ color }} />
+			</svg>	
+
+			{% elif aleatorio == 4%}  
+			<svg height="600" width="1000">
+			<line x1={{ x }} y1={{ y }} x2={{ x2 }} y2={{ y2 }} stroke={{ color }} stroke-width="4" />
+			</svg>	 
+			{% endif %} 
+
+		</div>
+
+	</body>
+
+</html>
+
+      
