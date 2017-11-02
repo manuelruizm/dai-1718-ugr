@@ -5,4 +5,8 @@
 *juanra.png
 *manolo.png
 
+# Caché de python
+Practica2/__pycache__/
 
+# Base de datos
+Practica3/datos.dat
