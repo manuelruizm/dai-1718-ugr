@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title>Mandelbrot</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{{ url_for('static', filename='P2-E4.css') }}" rel="stylesheet">
+		<meta name="author" content="Manuel Ruiz">
+
+	</head>
+
+	<body>
+
+		<div align="center">
+
+			<h1>Conjunto de Mandelbrot</h1>
+			<h3> Introduza las coordenadas x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub> y la anchura en pixeles </h3>
+			<br>
+
+			<form action="/mandelbrot" method="GET">
+
+				<div class="label">
+					<label for="x1">Coordenada x<sub>1</sub>:</label>
+					<input type="number" name="x1" value = "-1"/>
+				</div><br>
+
+				<div class="label">
+					<label for="x2">Coordenada x<sub>2</sub>:</label>
+					<input type="number" name="x2" value = "1"/>
+				</div><br>
+
+				<div class="label">
+					<label for="y1">Coordenada y<sub>1</sub>:</label>
+					<input type="number" name="y1" value = "-1"/>
+				</div><br>
+
+				<div class="label">
+					<label for="y2">Coordenada y<sub>2</sub>:</label>
+					<input type="number" name="y2" value = "1"/>
+				</div><br>
+
+				<div class="label">
+					<label for="anchura">Anchura (px):</label>
+					<input type="number" name="anchura" value = "300"/>
+				</div> <br>
+
+				<div class="label">
+					<label for="iteraciones">Iteraciones:</label>
+					<input type="number" name="iteraciones" value = "100"/>
+				</div> <br>
+
+				<div class="button">
+					<br>
+					<button type="submit">Generar imagen de Mandelbrot</button>
+				</div><br>
+
+			</form>  
+
+		</div>
+
+	</body>
+
+</html>
