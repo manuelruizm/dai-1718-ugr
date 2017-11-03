@@ -91,12 +91,20 @@ def modificar():
 
 	return render_template('editar.html', logueado = logged, misDatos = datos)
 
-	
-
 @app.route('/logout')
 def logout():
 	session.pop('username', None)
 	return redirect(url_for('index'))
+
+@app.before_request
+def before_request():
+	nueva = request.url
+	if request.url != "http://127.0.0.1:5000/favicon.ico":
+		if 'anterior2' in session:
+			session['anterior3'] = session['anterior2']
+		if 'anterior1' in session:
+			session['anterior2'] = session['anterior1']
+		session['anterior1'] = nueva
 
 @app.errorhandler(404)
 def page_not_found(error):
