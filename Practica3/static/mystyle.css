@@ -1,20 +1,24 @@
 h1{
-	color: red;
+	color: white;
 	text-align: center;
 }
 
 h2{
+	color: rgb(255,0,128);
 	text-align: center;
+}
+
+body{
+	background-color: gray;
 }
 
 /* Datos de estilo para el bloque global de la cabecera. */
 header{
-	border-width: 2px;
-	border-style: solid;
-	border-color: green;
 	width: 100%; /* Para ajustar al ancho completo del viewport. */
 	overflow: auto; /* Para que el bloque <header> se adapte al tamaño de 
 					   su contenido. */
+	background-color: black;
+	border-radius: 15px;
 }
 
 /* Datos de estilo para cada uno de los elementos internos al <header>. */
@@ -33,19 +37,13 @@ header #logo{
 }
 
 header #titulo{
-	width: 50%;
-	/*border-width: 1px;
-	border-style: solid;
-	border-color: green;*/
+	width: 60%;
 }
 
 header #formulario{
-	width: 28%;
+	width: 20%;
 	text-align: center;
-	margin-top: 4%;
-	/*border-width: 1px;
-	border-style: solid;
-	border-color: green;*/
+	color: white;
 }
 
 .main-container{
@@ -53,28 +51,24 @@ header #formulario{
 	min-height: 350px;
 	margin-top: 2px;
 	margin-left: 10%;
-	border-width: 2px;
-	border-style: solid;
-	border-color: green;
 	overflow: auto;
+	background-color: rgb(200,200,200);
+	border-radius: 15px;
 }
 
 .left-column{
 	width: 20%;
 	margin: 2px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: red;
 	float: left;
 }
 
 .right-column{
 	width: 78%;
 	margin: 2px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: blue;
 	float: left;
+	text-align: center;
+	color: black;
+	font-size: 20px;
 }
 
 ul{
@@ -101,11 +95,12 @@ li:hover{
 footer{
 	width: 100%;
 	min-height: 100px;
-	margin-top: 2px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: green;
 	text-align: center;
+	background-color: black;
+	color: white;
+	border-radius: 15px;
+	font-size: 20px;
+	margin-top: 2px;
 }
 
 #logo-face{
