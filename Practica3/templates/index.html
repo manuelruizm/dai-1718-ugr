@@ -27,14 +27,16 @@
 		<div class="cabecera" id="formulario">
 			{% if not logueado %}
 				<form action="/" method="post">
+					<br>
 					Nombre: <br>
-					<input type="text" name="nombre"><br>
+					<input type="text" name="nombre"><br><br>
 					Contraseña: <br>
-					<input type="text" name="contraseña"><br>
+					<input type="password" name="contraseña"><br><br>
 					<input type="submit" value="Iniciar Sesión">
 					<button><a href="/registrarse">Registrarse</a></button>
 				</form>
 			{% else %}
+				<br><br>
 				<p>Bienvenido {{session['username']}}</p>
 				<button><a href="/logout">Log out</a></button>
 			{% endif %}
@@ -50,8 +52,12 @@
 				<a href="/"><li>Inicio</li></a>
 				<a href="/clasificacion"><li>Clasificación</li></a>
 				<a href="/contacto"><li>Contacto</li></a>
+
 				{% if logueado %}
 				<a href="/editar"><li>Editar</li></a>
+				<a id="anterior1" href={{session['anterior1']}}><li>Anterior 1</li></a>
+				<a id="anterior2" href={{session['anterior2']}}><li>Anterior 2</li></a>
+				<a id="anterior3" href={{session['anterior3']}}><li>Anterior 3</li></a>
 				{% endif %}
 			</ul>
 
@@ -69,7 +75,7 @@
 
 	<footer>
 
-		<p>&copy Manuel Ruiz Maldonado (Licencia MIT)</p>
+		&copy Manuel Ruiz Maldonado (Licencia MIT)
 
 	</footer>
 
