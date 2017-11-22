@@ -21,20 +21,47 @@ app.secret_key = 'random key'
 @app.route('/', methods=['GET','POST'])
 def index():
 
-	get_access = True
+	# get_access = True
+    #
+	# # Si se pide con un GET se da la página tal cual.
+	# if(request.method == 'POST'):
+	# 	get_access = False
+	# session['logged'] = 'username' in session
+    #
+	# if(not get_access):
+	# 	db = shelve.open('datos.dat')
+	# 	user = db.get(request.form['nombre'], None)
+	# 	if(user!=None):
+	# 		user = user['Username']
+	# 	password = request.form['contraseña']
+    #
+	# 	if(password == db[user]['Password']):
+	# 		session['logged'] = True
+	# 		session['username'] = user
+	# 	else:
+	# 		session['logged'] = False
+	# 	db.close()
+
+	return render_template('index.html')
+
+@app.route('/iniciarsesion', methods=['GET','POST'])
+def iniciarsesion():
+
+	# get_access = True
+
 
 	# Si se pide con un GET se da la página tal cual.
 	if(request.method == 'POST'):
-		get_access = False
+		# get_access = False
 
-	session['logged'] = 'username' in session
 
-	if(not get_access):
+
+	# if(not get_access):
 		db = shelve.open('datos.dat')
-		user = db.get(request.form['nombre'], None)
+		user = db.get(request.form['nombreid'], None)
 		if(user!=None):
 			user = user['Username']
-		password = request.form['contraseña']
+		password = request.form['contraseñaid']
 
 		if(password == db[user]['Password']):
 			session['logged'] = True
@@ -42,8 +69,9 @@ def index():
 		else:
 			session['logged'] = False
 		db.close()
+		return redirect(url_for('index'))
 
-	return render_template('index.html')
+	return render_template('iniciarsesion.html')
 
 @app.route('/registrarse', methods=['GET','POST'])
 def registro():
@@ -91,6 +119,7 @@ def modificar():
 @app.route('/logout')
 def logout():
 	session.pop('username', None)
+	session['logged'] = False
 	return redirect(url_for('index'))
 
 @app.before_request
