@@ -13,6 +13,7 @@
 # -*- coding: UTF-8 -*-
 
 from flask import Flask, render_template, session, request, redirect, url_for
+from pymongo import MongoClient
 import shelve
 
 app = Flask(__name__)
@@ -87,9 +88,18 @@ def registro():
 
 	return render_template('registrarse.html')
 
-@app.route('/clasificacion')
-def clasificacion():
-	return render_template('clasificacion.html')
+@app.route('/busqueda', methods=['GET','POST'])
+def busqueda():
+	client = MongoClient('localhost', 27017)
+	db = client['test']
+	restaurants = db.restaurants
+	if(request.method=='POST'):
+		query = restaurants.find({ 'borough' : request.form['buscar']})
+		return render_template('busqueda.html', value=query)
+
+    # return render_template('restaurants.html', value=query)
+	else:
+		return render_template('busqueda.html', value="null")
 
 @app.route('/contacto')
 def contacto():
