@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>{% block name %}PDV{% endblock %}</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="static/mystyle.css"> -->
+	<!-- Required meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Manuel Ruiz">
+
+</head>
+
+<body>
+
+	<header>
+
+		<!-- LOGO Y ENLACES PARA IDENTIFICARSE Y REGISTRARSE -->
+		<nav class="navbar navbar-light bg-light justify-content-between">
+			<a class="navbar-brand">Navbar</a>
+			<div class="div-inline">
+				{% if not session['logged'] %}
+					<a class="nav-list-link" href="/iniciarsesion">Iniciar sesión <span class="sr-only">(current)</span></a>
+					<a class="nav-list-link" href="/registrarse">Registrarse</a>
+				{% else %}
+					<a>Bienvenido {{session['username']}}</a>
+					<a class="nav-list-link" href="/logout">Log out</a>
+				{% endif %}
+			</div>
+		</nav>
+
+		<!-- NAVBAR CON EL MENÚ Y LA BÚSQUEDA -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/busqueda">Búsqueda</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="/contacto">Contacto</a>
+					</li>
+
+					{% if session['logged'] %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Páginas anteriores
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href={{session['anterior1']}}>Anterior 1</a>
+								<a class="dropdown-item" href={{session['anterior2']}}>Anterior 2</a>
+								<a class="dropdown-item" href={{session['anterior3']}}>Anterior 3</a>
+							</div>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+
+		</nav>
+
+	</header>
+
+	<div>
+
+		{% block content %}
+		<p>Esta es la página de inicio.</p>
+		{% endblock %}
+
+	</div>
+
+	<footer>
+
+		&copy; Manuel Ruiz Maldonado (Licencia MIT)
+
+	</footer>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
