@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{% block name %}
+Búsqueda
+{% endblock %}
+
+{% block content %}
+Búsqueda
+
+    <form class="form-inline my-2 my-lg-0" action="/busqueda" method="post">
+        <div class="form-group">
+        <label for="exampleFormControlSelect1">Barrios -----> </label>
+            <select class="form-control" id="exampleFormControlSelect1" name="buscar">
+                <option>Seleccione una opción</option>
+                <option>Bronx</option>
+                <option>Brooklyn</option>
+            </select>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Calle</th>
+                <th scope="col">Barrio</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in value %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{restaurant.name}}</td>
+                <td>{{restaurant.cuisine}}</td>
+                <td>{{restaurant.borough}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
