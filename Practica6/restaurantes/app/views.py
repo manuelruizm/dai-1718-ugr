@@ -9,5 +9,14 @@ def index(request):
 def contacto(request):
 	return render(request, 'contacto.html')
 
-def error404(request):
-	return render(request, 'error404.html')
+def registro(request):
+	if(request.method == 'POST'):
+		db = shelve.open('datos.dat')
+		user = request.form['nombre']
+		password = request.form['contraseña']
+
+		db[user] = {'Username': user, 'Password': password}
+		db.close()
+		return render(request, 'index.html')
+
+	return render(request, 'registrarse.html')
