@@ -4,7 +4,8 @@ from .models import restaurantes
 # Create your views here.
 
 def index(request):
-	return render(request, 'index.html')
+	context = {}
+	return render(request, 'index.html', context)
 
 def contacto(request):
 	return render(request, 'contacto.html')
@@ -39,3 +40,18 @@ def iniciarsesion(request):
 	# 	return redirect(url_for('index'))
 
 	return render(request, 'iniciarsesion.html')
+
+def busqueda(request):
+	# session['acceso-con-get']=True
+	# client = MongoClient('localhost', 27017)
+	# db = client['test']
+	# restaurants = db.restaurants
+	# if(request.method=='POST'):
+	# 	session['acceso-con-get']=False
+	# 	query = restaurants.find({ 'borough' : request.form['buscar']}).limit(10)
+	# 	return render_template('busqueda.html', value=query, param=request.form['buscar'])
+    #
+    # # return render_template('restaurants.html', value=query)
+	# else:
+	# 	return render_template('busqueda.html', value="null")
+	return render(request, 'busqueda.html')

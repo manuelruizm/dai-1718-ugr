@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'contacto', views.contacto, name='contacto'),
     url(r'registrarse', views.registro, name='registro'),
     url(r'iniciarsesion', views.iniciarsesion, name='iniciarsesion'),
+    url(r'busqueda', views.busqueda, name='busqueda'),
 ]
