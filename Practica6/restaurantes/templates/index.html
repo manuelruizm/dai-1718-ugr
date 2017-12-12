@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>{% block name %}PDV{% endblock %}</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	{% load static %}
+	<link rel="stylesheet" href={% static 'mystyle.css' %}>
+	<!-- Required meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Manuel Ruiz">
+
+
+
+</head>
+
+<body>
+
+	<header>
+
+		<!-- LOGO Y ENLACES PARA IDENTIFICARSE Y REGISTRARSE -->
+		<nav class="navbar navbar-light justify-content-between bg-white text-danger">
+			<a class="navbar-brand col-sm-8">QUICK EAT</a>
+			<div class="div-inline">
+
+			</div>
+		</nav>
+
+		<!-- NAVBAR CON EL MENÚ Y LA BÚSQUEDA -->
+		<nav class="navbar navbar-expand-lg navbar-light">
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link bg-white text-danger" href="/">Inicio <span class="sr-only">(current)</span></a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link bg-white text-danger" href="/busqueda">Búsqueda</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link bg-white text-danger" href="/contacto">Contacto</a>
+					</li>
+				</ul>
+			</div>
+
+		</nav>
+
+	</header>
+
+	<div class="row-sm-6 text-center" id="centrooo">
+
+		{% block content %}
+		<p id="centraco">Esta es la página de inicio.</p>
+		{% endblock %}
+
+	</div>
+
+	<footer class="text-danger text-center">
+
+		&copy; Manuel Ruiz Maldonado (Licencia MIT)
+
+		<button id="cambiarTama">Tamaño</button>
+		<button id="cambiarTipo">Tipo</button>
+		<button id="cambiarColor">Color</button>
+
+	</footer>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- <script>
+		$("#cambiarTama").click(function(){
+			$("#centrooo").css("font-size", "50px");
+		});
+	</script> -->
+
+	<script>
+		$("#cambiarTama").click(function(){
+			$("#centrooo").animate({
+				fontSize: '50px'
+			});
+		});
+
+		$("#cambiarTipo").click(function(){
+			$("#centrooo").css("font-family", "courier");
+		});
+
+		$("#cambiarColor").click(function(){
+			$("#centrooo").css("color", "red");
+		});
+
+		$("#myDropdown").mouseenter(function(){
+			$("#myExpand").show();
+		});
+
+		$("#myExpand").mouseleave(function(){
+			$("#myExpand").hide();
+		});
+
+		crear_botones();
+	</script>
+
+</body>
+
+</html>
