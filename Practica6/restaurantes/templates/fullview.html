@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang=es-ES>
+
+{% block head %}
+<head>
+
+	<title>{% block title %}{% endblock %}</title>
+	{% load static %}
+	<link rel="stylesheet" href={% static 'fullview.css' %}>
+	<meta charset="UTF-8">
+	<meta name="author" content="Manuel Ruiz">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="icon" type="image/png" href="static/images/...">-->
+
+</head>
+{% endblock %}
+
+<body>
+
+	<div class="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+</body>
+
+</html>
