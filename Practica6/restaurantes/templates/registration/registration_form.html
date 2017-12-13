@@ -1,0 +1,19 @@
+{% extends "fullview.html" %}
+
+{% block title %}
+Registrarse
+{% endblock %}
+
+{% block content %}
+	<h1>Register Here</h1>
+	<form action="/registrarse" method="post"><br>
+		{% csrf_token %}
+        {{ form.as_p }}
+		<!-- Nombre: <br>
+		<input type="text" name="nombre"><br><br>
+		Contraseña: <br>
+		<input type="password" name="contraseña"><br><br> -->
+		<input type="submit" value="Registrarse"><br>
+		<br><br>
+	</form>
+{% endblock %}
