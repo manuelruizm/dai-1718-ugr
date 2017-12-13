@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import restaurantes
 from .form import *
 from bson.json_util import dumps
@@ -12,35 +12,17 @@ def contacto(request):
 	return render(request, 'contacto.html')
 
 def registro(request):
-	# if(request.method == 'POST'):
-	# 	db = shelve.open('datos.dat')
-	# 	user = request.form['nombre']
-	# 	password = request.form['contraseña']
-    #
-	# 	db[user] = {'Username': user, 'Password': password}
-	# 	db.close()
-	# 	return render(request, 'index.html')
+	if(request.method == 'POST'):
+		return render(request, 'index.html')
 
-	return render(request, 'registrarse.html')
+	return HttpResponseRedirect('/accounts/register')
 
 def iniciarsesion(request):
-	# Si se pide con un GET se da la página tal cual.
-	# if(request.method == 'POST'):
-	# 	db = shelve.open('datos.dat')
-	# 	user = db.get(request.form['nombreid'], None)
-	# 	if(user!=None):
-	# 		user = user['Username']
-	# 	password = request.form['contraseñaid']
-    #
-	# 	if(password == db[user]['Password']):
-	# 		session['logged'] = True
-	# 		session['username'] = user
-	# 	else:
-	# 		session['logged'] = False
-	# 	db.close()
-	# 	return redirect(url_for('index'))
+	if(request.method == 'POST'):
+		context = {'logged': True}
+		return render(request, 'index.html', context)
 
-	return render(request, 'iniciarsesion.html')
+	return HttpResponseRedirect('/accounts/login')
 
 def busqueda(request):
 	accesoconget = True
@@ -70,6 +52,10 @@ def busqueda_ajax(request):
 	query = restaurantes.find({ 'borough' : barrio}).skip(pagina_py*10).limit(10)
 	data = dumps(query)
 	return HttpResponse(data, content_type='json')
+
+def logout(request):
+	context = {'logged': False}
+	return render(request, 'index.html', context)
 
 def formRest(request):
 	if request.method == 'POST':
