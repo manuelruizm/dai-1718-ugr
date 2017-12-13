@@ -6,22 +6,24 @@ Búsqueda
 
 {% block content %}
 
-    <form class="form-inline my-2 my-lg-0 bg-light" action="/busqueda" method="post">
+    <form class="form-inline my-2 my-lg-0 bg-light" action={% url 'busqueda' %} method="post">
         <div class="form-group">
-        <label class="col-sm-6" for="exampleFormControlSelect1">Búsqueda por Barrios</label>
-            <select class="form-control col-sm-6" id="exampleFormControlSelect1" name="buscar">
+            {% csrf_token %}
+            <!-- <label class="col-sm-12" for="exampleFormControlSelect1">Búsqueda por Barrios</label> -->
+            <!-- <select class="form-control col-sm-6" id="exampleFormControlSelect1" name="buscar">
                 <option>Seleccione una opción</option>
                 <option>Bronx</option>
                 <option>Brooklyn</option>
                 <option>Queens</option>
                 <option>Staten Island</option>
                 <option>Manhattan</option>
-            </select>
+            </select> -->
+            {{ form }}
         </div>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 
-    {% if not acceso_con_get %}
+    {% if not accesoconget %}
     <button id="pagina-anterior">Ant</button>
     <button id="pagina-siguiente">Sig</button>
 
@@ -65,9 +67,8 @@ Búsqueda
         };
 
         function leer_datos_ajax() {
-            $.get('/busqueda-ajax', {pagina_py: pagina, param: param}, function(data) {
-                var restaurantes = JSON.parse(data);
-
+            $.get('/busquedaajax', {pagina_py: pagina, param: param}, function(data) {
+                var restaurantes = data
                 $('#mi-tabla tbody').empty();
 
                 for (r in restaurantes){
