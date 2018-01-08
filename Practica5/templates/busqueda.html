@@ -1,0 +1,82 @@
+{% extends "index.html" %}
+
+{% block name %}
+Búsqueda
+{% endblock %}
+
+{% block content %}
+
+    <form class="form-inline my-2 my-lg-0 bg-light" action="/busqueda" method="post">
+        <div class="form-group">
+        <label class="col-sm-6" for="exampleFormControlSelect1">Búsqueda por Barrios</label>
+            <select class="form-control col-sm-6" id="exampleFormControlSelect1" name="buscar">
+                <option>Seleccione una opción</option>
+                <option>Bronx</option>
+                <option>Brooklyn</option>
+                <option>Queens</option>
+                <option>Staten Island</option>
+                <option>Manhattan</option>
+            </select>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+    {% if not session['acceso-con-get'] %}
+    <button id="pagina-anterior">Ant</button>
+    <button id="pagina-siguiente">Sig</button>
+
+        <table class="table table-striped table-sm table-responsive text-left" id="mi-tabla">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cocina</th>
+                    <th scope="col">Barrio</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for restaurant in value %}
+                <tr>
+                    <!-- <th scope="row">{{loop.index}}</th> -->
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.cuisine}}</td>
+                    <td>{{restaurant.borough}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <script>
+
+        var pagina = 1;
+        var param = '{{ param }}';
+
+        function crear_botones() {
+            $("#pagina-siguiente").click(function() {
+                pagina += 1;
+                leer_datos_ajax();
+            });
+
+            $("#pagina-anterior").click(function() {
+                pagina -= 1;
+                leer_datos_ajax();
+            });
+        };
+
+        function leer_datos_ajax() {
+            $.get('/busqueda-ajax', {pagina_py: pagina, param: param}, function(data) {
+                var restaurantes = JSON.parse(data);
+
+                $('#mi-tabla tbody').empty();
+
+                for (r in restaurantes){
+                    $('#mi-tabla tbody').append('<tr><td>'+
+                        restaurantes[r]['name']+'</td><td>'+restaurantes[r]['cuisine']+'</td><td>'+restaurantes[r]['borough']+
+                        '</td></tr>');
+                }
+            });
+        };
+    </script>
+
+{% endblock %}
