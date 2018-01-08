@@ -20,9 +20,14 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'contacto', views.contacto, name='contacto'),
-    url(r'registrarse', views.registro, name='registro'),
-    url(r'iniciarsesion', views.iniciarsesion, name='iniciarsesion'),
+    # url(r'registrarse', views.registro, name='registro'),
+    # url(r'iniciarsesion', views.iniciarsesion, name='iniciarsesion'),
     url(r'busquedaajax', views.busqueda_ajax, name='busqueda_ajax'),
     url(r'busqueda', views.busqueda, name='busqueda'),
-    url(r'logout', views.logout, name='logout'),
+    # url(r'logout', views.logout, name='logout'),
+    url(r'anadir', views.anadir, name='anadir'),
+    url(r'modificar', views.modificar, name='modificar'),
+    url(r'mapa', views.mapa, name='mapa'),
+    url(r'grafica', views.grafica, name='grafica'),
+    url(r'estadistica', views.estadistica, name='estadistica'),
 ]

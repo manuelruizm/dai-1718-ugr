@@ -6,7 +6,7 @@ Inciar sesión
 
 {% block content %}
 	<h1>Login</h1>
-	<form action="/iniciarsesion" method="post"><br>
+	<form action="." method="post"><br>
 		{% csrf_token %}
 		{{ form.as_p }}
 		<!-- Nombre: <br>

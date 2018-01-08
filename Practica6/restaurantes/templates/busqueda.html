@@ -9,18 +9,33 @@ Búsqueda
     <form class="form-inline my-2 my-lg-0 bg-light" action={% url 'busqueda' %} method="post">
         <div class="form-group">
             {% csrf_token %}
-            <!-- <label class="col-sm-12" for="exampleFormControlSelect1">Búsqueda por Barrios</label> -->
-            <!-- <select class="form-control col-sm-6" id="exampleFormControlSelect1" name="buscar">
-                <option>Seleccione una opción</option>
-                <option>Bronx</option>
-                <option>Brooklyn</option>
-                <option>Queens</option>
-                <option>Staten Island</option>
-                <option>Manhattan</option>
-            </select> -->
             {{ form }}
         </div>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+    {% if user.is_staff %}
+        <form class="form-inline my-2 my-lg-0 bg-light" action={% url 'anadir' %} method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ otroform }}
+            </div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Añadir</button>
+        </form>
+        <form class="form-inline my-2 my-lg-0 bg-light" action={% url 'modificar' %} method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ otroform2 }}
+            </div>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Modificar</button>
+        </form>
+    {% endif %}
+    <form class="form-inline my-2 my-lg-0 bg-light" action={% url 'mapa' %} method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            {{ mapaform }}
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ver mapa</button>
     </form>
 
     {% if not accesoconget %}
@@ -34,6 +49,7 @@ Búsqueda
                     <th scope="col">Nombre</th>
                     <th scope="col">Cocina</th>
                     <th scope="col">Barrio</th>
+                    <th scope="col">ID</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +59,7 @@ Búsqueda
                     <td>{{restaurant.name}}</td>
                     <td>{{restaurant.cuisine}}</td>
                     <td>{{restaurant.borough}}</td>
+                    <td>{{restaurant.restaurant_id}}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -78,6 +95,7 @@ Búsqueda
                 }
             });
         };
+
     </script>
 
 {% endblock %}

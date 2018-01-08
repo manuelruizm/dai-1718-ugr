@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+<meta id="mylatitud" data-lat={{latitud}} />
+<meta id="mylongitud" data-lon={{longitud}} />
+
+{% block name %}
+Mapa
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped table-sm table-responsive text-left">
+    <thead>
+        <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">Nombre</th>
+            <th scope="col">Cocina</th>
+            <th scope="col">Barrio</th>
+            <th scope="col">ID</th>
+            <th scope="col">Latitud</th>
+            <th scope="col">Longitud</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for restaurant in value %}
+        <tr>
+            <!-- <th scope="row">{{loop.index}}</th> -->
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.cuisine}}</td>
+            <td>{{restaurant.borough}}</td>
+            <td>{{restaurant.restaurant_id}}</td>
+            <td>{{latitud}}</td>
+            <td>{{longitud}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+
+    <script>
+      function initMap() {
+          var la = {{latitud}}
+          var lo = {{longitud}}
+
+        var uluru = {lat: la, lng: lo};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1C6dPr0EKPZkAuv1GYDLDZMkV4fdw4OY&callback=initMap">
+    </script>
+{% endblock %}

@@ -6,7 +6,7 @@ Registrarse
 
 {% block content %}
 	<h1>Register Here</h1>
-	<form action="/registrarse" method="post"><br>
+	<form action="." method="post"><br>
 		{% csrf_token %}
         {{ form.as_p }}
 		<!-- Nombre: <br>

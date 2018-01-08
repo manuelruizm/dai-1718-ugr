@@ -25,12 +25,12 @@
 		<nav class="navbar navbar-light justify-content-between bg-white text-danger">
 			<a class="navbar-brand col-sm-8">QUICK EAT</a>
 			<div class="div-inline">
-				{% if not logged %}
-					<a class="nav-list-link col-sm-2" href="/iniciarsesion">Iniciar sesión <span class="sr-only">(current)</span></a>
-					<a class="nav-list-link col-sm-2" href="/registrarse">Registrarse</a>
+				{% if user.is_authenticated %}
+					<a class="col-sm-8">Bienvenido {{ user.username }}!!</a>
+					<a class="nav-list-link col-sm-8" href="{% url 'auth_logout' %}">Log out</a>
 				{% else %}
-					<a class="col-sm-8">Bienvenido!!</a>
-					<a class="nav-list-link col-sm-8" href="/logout">Log out</a>
+					<a class="nav-list-link col-sm-2" href="{% url 'auth_login' %}">Iniciar sesión <span class="sr-only">(current)</span></a>
+					<a class="nav-list-link col-sm-2" href="{% url 'registration_register' %}">Registrarse</a>
 				{% endif %}
 			</div>
 		</nav>
@@ -53,21 +53,21 @@
 					</li>
 
 					<li class="nav-item">
+						<a class="nav-link bg-white text-danger" href="/grafica">Gráfica</a>
+					</li>
+
+					<li class="nav-item">
 						<a class="nav-link bg-white text-danger" href="/contacto">Contacto</a>
 					</li>
 
-					{% if logged %}
+					<!-- {% if user.is_staff %}
 						<li class="nav-item dropdown" id="myDropdown">
 							<a class="nav-link dropdown-toggle bg-white text-danger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Páginas anteriores
+							Añadir
 							</a>
-							<div class="dropdown-menu bg-white text-danger" aria-labelledby="navbarDropdown" id="myExpand">
-								<a class="dropdown-item bg-white text-danger" href={{anterior1}}>Anterior 1</a>
-								<a class="dropdown-item bg-white text-danger" href={{anterior2}}>Anterior 2</a>
-								<a class="dropdown-item bg-white text-danger" href={{anterior3}}>Anterior 3</a>
-							</div>
+
 						</li>
-					{% endif %}
+					{% endif %} -->
 				</ul>
 			</div>
 
